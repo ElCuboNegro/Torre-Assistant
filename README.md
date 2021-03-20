@@ -11,7 +11,8 @@ Kronos Torre is a Google Action that can help you to find a job.
     - [Firebase CLI](#firebase-cli)
   - [Usage:](#usage)
     - [Create and setup the project:](#create-and-setup-the-project)
-  - [](#)
+  - [Get the Torre Assistant code](#get-the-torre-assistant-code)
+  - [Deploy and test the Assistant](#deploy-and-test-the-assistant)
   - [In deep documentation:](#in-deep-documentation)
   - [Contributing](#contributing)
   - [Credits:](#credits)
@@ -61,15 +62,32 @@ Select Blank project and click Start building.
 Enable the Actions API in the Google Cloud console by following the instructions in [Enable and disable APIs](https://support.google.com/googleapi/answer/6158841). This allows gactions to interact with your project.
 
 
+## Get the Torre Assistant code
+1. clone this repository into your local machine
+2. Open the 'torre-assistant'/sdk/settings/settings.yaml file and change the value of the projectId (torre-assistant) field to YOUR project's ID. (it won't deploy if there is a colission with other firebase project)
 
-1. Create an empty directory and initialize the hello-world sample in that directory. For example, the following code initializes the sample in an example/ directory, which is used as an example throughout this document, but you have to create your own:
+## Deploy and test the Assistant
+After you set up the project, you can deploy the Torre Assistant web app and your Actions project. This process creates a draft version of your Actions project that you can deploy to the Actions simulator for previewing and testing:
+1. From the torre-assistant/ directory, run the following command to deploy the Torre Assistant web app (the contents of the public/ directory).
+   ```
+   firebase deploy --project PROJECT_ID --only hosting
+   ```
+   You can see a rendered version of the web app at the URL returned by the Firebase CLI in a browser: https://PROJECT_ID.web.app.
+2. Open the `torre-assistant/sdk/webhooks/ActionsOnGoogleFulfillment/index.js` file and change the value of the CANVAS_URL variable to your project's web app URL.
+  ```
+  const CANVAS_URL = 'https://PROJECT_ID.web.app';
+  ```
+3. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
+  ```
+  gactions push 
+  ```
+4. From the torre-assistant/sdk/ directory, run the following command to test your Actions project in the simulator:
+  ```
+  gactions deploy preview
+  ```
+5. Open the link that the command-line tool returns to go to the simulator.
 
-```
-gactions init hello-world --dest example
-cd example
-```
 
-## 
 
 ## In deep documentation:
 TBD
