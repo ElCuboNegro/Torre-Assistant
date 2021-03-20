@@ -2,11 +2,10 @@
 #  http://jenkins-ci.org/
 #  https://wiki.jenkins-ci.org/display/JENKINS/Administering+Jenkins
 
-#ignore all JENKINS_HOME except jobs directory, root xml config, and .gitignore file
-/*
 !/jobs
 !/.gitignore
 !/*.xml
+!/node_modules
 
 #ignore all files in jobs subdirectories except for folders
 #note: git doesn't track folders, only file content
@@ -20,3 +19,4 @@ jobs/**
 jobs/**/*workspace
 
 #as a result only settings and job config.xml files in JENKINS_HOME will be tracked by git
+node_modules
