@@ -1,15 +1,23 @@
-'use strict';
 const db = require('../models');
 const jwt = require('jsonwebtoken');
 const api = require('../api/torre');
 
 let controller = {
-    activeUser: async (req, res) => {
-        try {
-            //TODO
-        } catch (e) {
-            return res.status(500).json({ error: `${e}}` });
-        }
-    } 
+
+  me: async (req, res) => {
+    try {
+      let token = req.headers['authorization'].split(' ')[1];
+      let user = jwt.decode(token);
+      let torre_bio = await api.getBioInfo(user.torre_user);
+      let profile = torre_bio.person;
+      return res.status(200).json(profile);
+
+    } catch (e) {
+      return res.status(500).json({
+        error: `${e}`
+      });
+    }
+  },
 
 }
+module.exports = controller;
