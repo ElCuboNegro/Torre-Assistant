@@ -77,15 +77,20 @@ After you set up the project, you can deploy the Torre Assistant web app and you
   ```
   const CANVAS_URL = 'https://PROJECT_ID.web.app';
   ```
-3. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
+3. Open the `torre-assistant\sources\frontend\src\util\client.js`file and change the value of the baseURL.
+```
+	baseURL: "https://PROJECT_ID.web.app/api/v1"
+```
+
+4. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
   ```
   gactions push 
   ```
-4. From the torre-assistant/sdk/ directory, run the following command to test your Actions project in the simulator:
+5. From the torre-assistant/sdk/ directory, run the following command to test your Actions project in the simulator:
   ```
   gactions deploy preview
   ```
-5. Open the link that the command-line tool returns to go to the simulator.
+6. Open the link that the command-line tool returns to go to the simulator.
 
 
 
