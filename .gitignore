@@ -1,22 +1,12 @@
-#Learn more about Jenkins and JENKINS_HOME directory for which this file is intended.
-#  http://jenkins-ci.org/
-#  https://wiki.jenkins-ci.org/display/JENKINS/Administering+Jenkins
-
 !/jobs
 !/.gitignore
 !/*.xml
 !/node_modules
 
-#ignore all files in jobs subdirectories except for folders
-#note: git doesn't track folders, only file content
 jobs/**
 !jobs/**/
 
-#uncomment the following line to save next build numbers with config
-#!jobs/**/nextBuildNumber
-
-#don't track workspaces (when users build on the master)
 jobs/**/*workspace
 
-#as a result only settings and job config.xml files in JENKINS_HOME will be tracked by git
 node_modules
+public

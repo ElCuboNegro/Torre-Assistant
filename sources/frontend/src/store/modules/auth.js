@@ -44,7 +44,6 @@ const actions = {
 		return new Promise(resolve => {
 			commit(AUTH_LOGOUT);
 			localStorage.removeItem("auth-token");
-			resolve();
 		});
 	}
 };

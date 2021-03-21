@@ -2,6 +2,8 @@
 
 ## Description: 
 Kronos Torre is a Google Action that can help you to find a job.
+Note: this project is not intended to production. use Vue, nuxt or any other way to render pages inside google assistant is not recomended and this is only an example intended to show the use of this tools.
+A way better and simplier way to perform this divelopment is through rich responses and SSML, but that kind of efforts don't allow you to modify the frontend at any level.
 
 - [Kronos Torre](#kronos-torre)
   - [Description:](#description)
@@ -82,7 +84,29 @@ After you set up the project, you can deploy the Torre Assistant web app and you
 	baseURL: "https://PROJECT_ID.web.app/api/v1"
 ```
 
-4. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
+4. create a .env file with the following information:
+   
+   ```
+    #GENERAL CONFIG
+      DEBUG=TRUE
+      PORT=7777
+
+    #DATABASE CONFIG
+
+      DB_HOST=
+      DB_PORT=
+      DB_DIALECT=mysql
+      DB_NAME=
+      DB_USERNAME=
+      DB_PASSWORD=
+
+    #JWT CONFIG
+
+      SECRET_KEY=
+   ```
+   fill all the parts with the correct information of your database.
+
+5. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
   ```
   gactions push 
   ```

@@ -8,7 +8,6 @@
             height="400px"
             width="400px"
             :src="require('../../assets/wfh_1.svg')" 
-        <!-- TODO -->
             alt="Image"
           ></b-card-img>
         </b-col>
