@@ -8,6 +8,10 @@
             height="400px"
             width="400px"
             :src="require('../../assets/wfh_1.svg')" 
+<<<<<<< HEAD
+=======
+        <!-- TODO -->
+>>>>>>> webapp
             alt="Image"
           ></b-card-img>
         </b-col>
