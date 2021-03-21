@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 handlers:
-- name: start_scene_initial_prompt
+- name: create_user
+- name: system_error
+- name: place_order
 inlineCloudFunction:
   executeFunction: ActionsOnGoogleFulfillment

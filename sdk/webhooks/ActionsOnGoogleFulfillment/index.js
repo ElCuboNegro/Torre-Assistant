@@ -1,102 +1,109 @@
+/**
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 const {
   conversation,
-  Canvas,
 } = require('@assistant/conversation');
+const admin = require('firebase-admin');
 const functions = require('firebase-functions');
+const dotenv = require('dotenv');
 
-const INSTRUCTIONS = 'Quieres que cambie de color o que siga girando?';
-
-const CANVAS_URL = 'https://torre-assistant.web.app';
-
-const tints = {
-  black: 0x000000,
-  blue: 0x0000FF,
-  green: 0x00FF00,
-  cyan: 0x00FFFF,
-  indigo: 0x4B0082,
-  magenta: 0x6A0DAD,
-  maroon: 0x800000,
-  grey: 0x808080,
-  brown: 0xA52A2A,
-  violet: 0xEE82EE,
-  red: 0xFF0000,
-  purple: 0xFF00FF,
-  orange: 0xFFA500,
-  pink: 0xFFC0CB,
-  yellow: 0xFFFF00,
-  white: 0xFFFFFF,
+dotenv.config();
+admin.initializeApp();
+const auth = admin.auth();
+const db = admin.firestore();
+db.settings({timestampsInSnapshots: true});
+const dbs = {
+  user: db.collection('user'),
 };
 
-const app = conversation({debug: true});
+// The Client Id of the Actions Project (set it in the env file).
+const CLIENT_ID = process.env.CLIENT_ID;
 
-app.handle('welcome', (conv) => {
-  if (!conv.device.capabilities.includes('INTERACTIVE_CANVAS')) {
-    conv.add('Lo siento! Si no tienes una pantalla no puedo mostrarte gran parte de mi hermosa personalidad, pero, mientras tanto, podemos intentarlo sólo hablando.');
-    conv.scene.next.name = 'actions.page.END_CONVERSATION';
-    return;
+const app = conversation({debug: true, clientId: CLIENT_ID});
+
+// Identifies a request for the usual order.
+const USUAL = 'usual';
+
+// Available options.
+const options = ['matcha', 'boba'];
+
+// The name of the Firestore collection that keeps track of order history.
+const orderHistory = 'orderHistory';
+
+// This handler is called after the user has successfully linked their account.
+// Saves the user name in a session param to use it in dialogs, and inits the
+// Firestore db to store orders for the user.
+app.handle('create_user', async (conv) => {
+  const payload = conv.user.params.tokenPayload;
+  // write user name in session to use in dialogs
+  conv.user.params.name = payload.given_name;
+  const email = payload.email;
+  if (email) {
+    try {
+      conv.user.params.uid = (await auth.getUserByEmail(email)).uid;
+    } catch (e) {
+      if (e.code !== 'auth/user-not-found') {
+        throw e;
+      }
+      // If the user is not found, create a new Firebase auth user
+      // using the email obtained from the Google Assistant
+      conv.user.params.uid = (await auth.createUser({email})).uid;
+    }
+    const userDoc = dbs.user.doc(conv.user.params.uid);
+    const orderHistoryColl = userDoc.collection(orderHistory);
+    for (let i = 0; i < options.length; i++) {
+      await orderHistoryColl.doc(options[i]).set(
+          {option: options[i], count: 0});
+    }
   }
-  conv.add('Bienvenido! quieres que cambie de color o que deje de girar?? ' +
-    'También puedes pedirme que te lo recuerde luego.');
-  conv.add(new Canvas({
-    // Update this placeholder string with the URL for your canvas web app.
-    url: CANVAS_URL,
-  }));
 });
 
-app.handle('fallback', (conv) => {
-  conv.add(`No entendí. Pero puedes cambiar mi color o pedirme que siga girando!!!.`);
-  conv.add(new Canvas());
-});
+// This handler is called to place an order and recompute the usual order if
+// needed.
+app.handle('place_order', async (conv) => {
+  let order = conv.session.params.order;
+  let usual = conv.user.params.usual;
 
-app.handle('change_color', (conv) => {
-  const color =
-    conv.intent.params.color? conv.intent.params.color.resolved : null;
-  if (!(color in tints)) {
-    conv.add(`Sorry, I don't know that color. Try red, blue, or green!`);
-    conv.add(new Canvas());
-    return;
+  if (order === USUAL) {
+    order = usual;
   }
-  conv.add(`Ok, I changed my color to ${color}. What else?`);
-    conv.add(new Canvas({
-      data: {
-        command: 'TINT',
-        tint: tints[color],
-      },
-    }));
+
+  const userDoc = dbs.user.doc(conv.user.params.uid);
+  const orderHistoryColl = userDoc.collection(orderHistory);
+
+  await orderHistoryColl.doc(order).update(
+      {count: admin.firestore.FieldValue.increment(1)});
+  if (order !== usual) {
+    // Recompute usual in case this order changed the favorite
+    let usualDoc = await orderHistoryColl.orderBy('count').limit(1).get();
+    conv.user.params.usual = usualDoc.data().option;
+  }
+
+  // Clear order session param for future sessions
+  conv.session.params.order = '';
+
+  return conv.add(`Your ${order} has been placed. ` +
+    'Thanks for using Boba Bonanza, see you soon!');
 });
 
-app.handle('start_spin', (conv) => {
-  conv.add(`Ok, I'm spinning. What else?`);
-  conv.add(new Canvas({
-    data: {
-      command: 'SPIN',
-      spin: true,
-    },
-  }));
-});
-
-app.handle('stop_spin', (conv) => {
-  conv.add('Ok, I paused spinning. What else?');
-  conv.add(new Canvas({
-    data: {
-      command: 'SPIN',
-      spin: false,
-    },
-  }));
-});
-
-app.handle('instructions', (conv) => {
-  conv.add(INSTRUCTIONS);
-  conv.add(new Canvas());
-});
-
-app.handle('restart', (conv) => {
-  conv.add(INSTRUCTIONS);
-  conv.add(new Canvas({
-    data: {
-      command: 'RESTART_GAME',
-    },
-  }));
+// Used to reset the slot for account linking status to allow the user to try
+// again if a system or network error occurred.
+app.handle('system_error', async (conv) => {
+  conv.session.params.AccountLinkingSlot = '';
 });
 
 exports.ActionsOnGoogleFulfillment = functions.https.onRequest(app);
