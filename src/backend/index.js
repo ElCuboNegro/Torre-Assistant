@@ -1,4 +1,4 @@
-const functions = require('firebase-functions');
-const app = require('./src/server');
+const { environment } = require('./lib/config/config');
+const app = require('./server');
 
-export.app = functions.https.onRequest(app);
+app.listen(environment.PORT);

@@ -1,12 +1,14 @@
-'use strict';
+const { environment } = require('../config/config');
+
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-const db = require.main.require('./models');
+
+const db = require('../models');
 const User = db.User;
 
 const opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = __.JWT.SECRET_KEY;
+opts.secretOrKey = environment.JWT.SECRET_KEY;
 
 module.exports = passport => {
 	passport.use(

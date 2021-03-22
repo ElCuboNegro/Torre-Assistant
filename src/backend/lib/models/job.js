@@ -1,6 +1,6 @@
 'use strict';
 const DataTypes = require('sequelize').DataTypes;
-const Database = require.main.require('./config/database');
+const Database = require('../config/database');
 
 const Job = Database.define('Job', {
 	torreId: {

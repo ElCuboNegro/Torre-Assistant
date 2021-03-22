@@ -1,13 +1,16 @@
 'use strict';
 const Sequelize = require('sequelize');
+const { environment } = require('./config');
+
+console.log(environment);
 
 const config = {
-	username: __.DB.USERNAME,
-	password: __.DB.PASSWORD,
-	database: __.DB.DATABASE,
-	host: __.DB.HOST,
-	port: __.DB.PORT,
-	dialect: __.DB.DIALECT,
+	username: environment.DB.USERNAME,
+	password: environment.DB.PASSWORD,
+	database: environment.DB.DATABASE,
+	host: environment.DB.HOST,
+	port: environment.DB.PORT,
+	dialect: environment.DB.DIALECT,
 	logging: true,
 	pool: {
 		max: 5,
