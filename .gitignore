@@ -2,6 +2,7 @@
 .firebaserc
 .env
 
+coverage
 node_modules
 
 package-lock.json
@@ -11,3 +12,7 @@ yarn.lock
 *.log
 
 dist
+
+database.rules.json
+firestore.indexes.json
+firestore.rules
