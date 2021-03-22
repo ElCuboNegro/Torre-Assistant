@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   root: true,
   env: {
@@ -8,6 +10,7 @@ module.exports = {
     'eslint:recommended',
     'google',
   ],
+  parser: 'babel-eslint',
   rules: {
     quotes: ['error', 'single'],
   },

@@ -1,7 +1,8 @@
+'use strict';
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const { default: chalk } = require('chalk');
 
 const models = require('./lib/models');
 
@@ -22,13 +23,17 @@ require('./lib/config/passport')(passport);
 
 app.get('/', (_, response) => {
   response.json({
-    hello: 'world'
+    hello: 'world',
   });
 });
 
 app.use('/v1/auth', authRoutes);
-app.use('/v1/user', passport.authenticate('jwt', { session: false }), userRoutes);
-app.use('/v1/job', passport.authenticate('jwt', { session: false }), jobRoutes);
+app.use('/v1/user', passport.authenticate('jwt', {
+  session: false,
+}), userRoutes);
+app.use('/v1/job', passport.authenticate('jwt', {
+  session: false,
+}), jobRoutes);
 
 models.database.sync();
 

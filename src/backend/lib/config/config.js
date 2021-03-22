@@ -1,3 +1,5 @@
+'use strict';
+
 const crypto = require('crypto');
 const pjson = require('../../package.json');
 
@@ -5,7 +7,7 @@ exports.environment = {
   NAME: pjson.name,
   PORT: Number(process.env.PORT ?? 3000),
   VERSION: pjson.version,
-  DEBUG: process.env.DEBUG == "TRUE" ? true : false,
+  DEBUG: process.env.DEBUG == 'TRUE',
   DB: {
     USERNAME: process.env.DB_USERNAME,
     PASSWORD: process.env.DB_PASSWORD,
@@ -15,6 +17,7 @@ exports.environment = {
     DIALECT: process.env.DB_DIALECT ?? 'sqlite',
   },
   JWT: {
-    SECRET_KEY: process.env.SECRET_KEY ?? crypto.randomBytes(32).toString('base64'),
+    SECRET_KEY: process.env.SECRET_KEY ?? crypto
+        .randomBytes(32).toString('base64'),
   },
 };

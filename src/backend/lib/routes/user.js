@@ -1,7 +1,9 @@
 'use strict';
-const express = require('express');
-const router = express.Router();
-const UserController = require('../controllers/user')
+
+const {Router} = require('express');
+const UserController = require('../controllers/user');
+
+const router = new Router();
 
 router.get('/me', UserController.me);
 

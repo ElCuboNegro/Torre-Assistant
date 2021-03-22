@@ -1,73 +1,81 @@
 const db = require('../models');
 const jwt = require('jsonwebtoken');
-const api = require('../api/torre')
-const Job = db.Job;
+const api = require('../api/torre');
+const {Job} = db;
 
-let controller = {
+const controller = {
 
-	getOffers: async (req, res) => {
-		try {
-			let token = req.headers['authorization'].split(' ')[1];
-			let offset = req.params.offset || 0;
-			let user = jwt.decode(token);
-			let jobs = await api.jobSearch(offset, user.torre_user);
-			let offers = jobs.results;
-			return res.status(200).json(offers);
+  async getOffers(req, res) {
+    try {
+      const token = req.headers.authorization.split(' ')[1];
+      const offset = req.params.offset || 0;
+      const user = jwt.decode(token);
+      const jobs = await api.jobSearch(offset, user.torre_user);
+      const offers = jobs.results;
 
-		} catch (e) {
-			return res.status(500).json({ error: `${e}` });
-		}
-	},
-	getAllOffers: async (req, res) => {
-		try {
-			let token = req.headers['authorization'].split(' ')[1];
-			let user = jwt.decode(token);
-			console.log(user);
-			let email = user.email;
-			let jobs = await Job.findAll({ where: { email } });
-			console.log(jobs);
-			return res.status(200).json(jobs);
+      return res.status(200).json(offers);
+    } catch (ex) {
+      return res.status(500).json({error: `${ex}`});
+    }
+  },
+  async getAllOffers(req, res) {
+    try {
+      const token = req.headers.authorization.split(' ')[1];
+      const user = jwt.decode(token);
 
-		} catch (e) {
-			return res.status(500).json({ error: `${e}` });
-		}
-	},
-	saveOffers: async (req, res) => {
-		try {
-			let token = req.headers['authorization'].split(' ')[1];
-			let user = jwt.decode(token);
-			let email = user.email;
-			let { id, compensation, skills, objective } = req.body;	
+      console.log(user);
+      const {email} = user;
+      const jobs = await Job.findAll({where: {email}});
 
-			let tx = await Job.findAll({ where: { email: email, torreId: id } });
-			if (tx.length) {
-				return res.status(200).json();
-			}
-			let skill = JSON.stringify(skills);
+      console.log(jobs);
 
-			let job = {
-				email: email,
-				torreId: id,
-				objective: objective,
-				skills: skill,
-			}
-			job.organization = req.body.organizations[0].name;
-			job.picture = req.body.organizations[0].picture;
-			if (compensation.data) {
-				job.currency = compensation.data.currency;
+      return res.status(200).json(jobs);
+    } catch (ex) {
+      return res.status(500).json({error: `${ex}`});
+    }
+  },
+  async saveOffers(req, res) {
+    try {
+      const token = req.headers.authorization.split(' ')[1];
+      const user = jwt.decode(token);
+      const {email} = user;
+      const {id, compensation, skills, objective} = req.body;
 
-				if (compensation.data.minAmount) job.compensation_min = parseInt(compensation.data.minAmount);
-				if (compensation.data.maxAmount) job.compensation_max = parseInt(compensation.data.maxAmount);
-			}
-			await Job.create(job);
+      const tx = await Job.findAll({where: {email, torreId: id}});
+
+      if (tx.length > 0) {
+        return res.status(200).json();
+      }
+      const skill = JSON.stringify(skills);
+
+      const job = {
+        email,
+        torreId: id,
+        objective,
+        skills: skill,
+      };
+
+      job.organization = req.body.organizations[0].name;
+      job.picture = req.body.organizations[0].picture;
+      if (compensation.data) {
+        job.currency = compensation.data.currency;
+
+        if (compensation.data.minAmount) {
+          job.compensation_min = Number.parseInt(compensation.data.minAmount);
+        }
+        if (compensation.data.maxAmount) {
+          job.compensation_max = Number.parseInt(compensation.data.maxAmount);
+        }
+      }
+      await Job.create(job);
 
 
-			return res.status(200).json();
+      return res.status(200).json();
+    } catch (ex) {
+      return res.status(500).json({error: `${ex}`});
+    }
+  },
 
-		} catch (e) {
-			return res.status(500).json({ error: `${e}` });
-		}
-	},
+};
 
-}
 module.exports = controller;
