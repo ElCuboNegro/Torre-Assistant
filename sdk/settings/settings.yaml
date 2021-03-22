@@ -14,16 +14,16 @@
 accountLinking:
   enableAccountCreation: true
   linkingType: GOOGLE_SIGN_IN
-category: FOOD_AND_DRINK
-defaultLocale: en
+category: GAMES_AND_TRIVIA
+defaultLocale: es
 localizedSettings:
-  developerEmail:
-  developerName:
-  displayName: Account linking sample
-  fullDescription:
-  privacyPolicyUrl:
-  pronunciation: Account linking sample
-  shortDescription:
+  developerEmail: j.alban@uniandes.edu.co
+  developerName: Juan José Albán Ortiz
+  displayName: Torre Assistant
+  fullDescription: The assistant that will give you information about the best job listings for you on torre.co
+  privacyPolicyUrl: https://torre.co/privacy
+  pronunciation: Torre Assistant
+  shortDescription: best jobs for you.
   smallLogoImage:
-  termsOfServiceUrl:
-projectId: <PROJECT_ID>
+  termsOfServiceUrl: https://torre.co/terms
+projectId: torre-assistant

@@ -1,7 +1,9 @@
-# Torre-Assistant
+# Kronos Torre
 
 ## Description: 
 Kronos Torre is a Google Action that can help you to find a job.
+Note: this project is not intended to production. use Vue, nuxt or any other way to render pages inside google assistant is not recomended and this is only an example intended to show the use of this tools.
+A way better and simplier way to perform this divelopment is through rich responses and SSML, but that kind of efforts don't allow you to modify the frontend at any level.
 
 - [Kronos Torre](#kronos-torre)
   - [Description:](#description)
@@ -11,11 +13,13 @@ Kronos Torre is a Google Action that can help you to find a job.
     - [Firebase CLI](#firebase-cli)
   - [Usage:](#usage)
     - [Create and setup the project:](#create-and-setup-the-project)
-  - [](#)
+  - [Get the Torre Assistant code](#get-the-torre-assistant-code)
+  - [Deploy and test the Assistant](#deploy-and-test-the-assistant)
   - [In deep documentation:](#in-deep-documentation)
   - [Contributing](#contributing)
   - [Credits:](#credits)
   - [License:](#license)
+  - [Build Setup](#build-setup)
 
 ## Installation: 
 ### NodeJS
@@ -60,8 +64,60 @@ Click New project, enter a project name, and click Create project, Select the ga
 Select Blank project and click Start building.
 Enable the Actions API in the Google Cloud console by following the instructions in [Enable and disable APIs](https://support.google.com/googleapi/answer/6158841). This allows gactions to interact with your project.
 
-## 
-TBD
+
+## Get the Torre Assistant code
+1. clone this repository into your local machine
+2. Open the 'torre-assistant'/sdk/settings/settings.yaml file and change the value of the projectId (torre-assistant) field to YOUR project's ID. (it won't deploy if there is a colission with other firebase project)
+
+## Deploy and test the Assistant
+After you set up the project, you can deploy the Torre Assistant web app and your Actions project. This process creates a draft version of your Actions project that you can deploy to the Actions simulator for previewing and testing:
+1. From the torre-assistant/ directory, run the following command to deploy the Torre Assistant web app (the contents of the public/ directory).
+   ```
+   firebase deploy --project PROJECT_ID --only hosting
+   ```
+   You can see a rendered version of the web app at the URL returned by the Firebase CLI in a browser: https://PROJECT_ID.web.app.
+2. Open the `torre-assistant/sdk/webhooks/ActionsOnGoogleFulfillment/index.js` file and change the value of the CANVAS_URL variable to your project's web app URL.
+  ```
+  const CANVAS_URL = 'https://PROJECT_ID.web.app';
+  ```
+3. Open the `torre-assistant\sources\frontend\src\util\client.js`file and change the value of the baseURL.
+```
+	baseURL: "https://PROJECT_ID.web.app/api/v1"
+```
+
+4. create a .env file with the following information:
+   
+   ```
+    #GENERAL CONFIG
+      DEBUG=TRUE
+      PORT=7777
+
+    #DATABASE CONFIG
+
+      DB_HOST=
+      DB_PORT=
+      DB_DIALECT=mysql
+      DB_NAME=
+      DB_USERNAME=
+      DB_PASSWORD=
+
+    #JWT CONFIG
+
+      SECRET_KEY=
+   ```
+   fill all the parts with the correct information of your database.
+
+5. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
+  ```
+  gactions push 
+  ```
+5. From the torre-assistant/sdk/ directory, run the following command to test your Actions project in the simulator:
+  ```
+  gactions deploy preview
+  ```
+6. Open the link that the command-line tool returns to go to the simulator.
+
+
 
 ## In deep documentation:
 TBD
@@ -75,7 +131,6 @@ Nuxt.js -> Creators
 
 ## License: 
 Copyright, Juan José Albán (2021)
-
 ## Build Setup
 
 ``` bash
