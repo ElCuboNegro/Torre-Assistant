@@ -13,7 +13,7 @@
     </b-card-body>
 
     <b-card-body id="apply">
-        <a v-bind:href="'https://torre.co/en/jobs/' + offer.torreId">Apply now...</a>
+        <a v-bind:href="'https://torre.co/en/jobs/' + offer.torreId">Aplica ahora...</a>
     </b-card-body>
 
     <b-card-footer class="text-center">Powered by Torre Api</b-card-footer>
@@ -36,7 +36,7 @@ export default {
 <style>
 #Card {
     margin-top: 2vh;
-    min-width: 350px;
+    min-width: 12vh;
     min-height: 70vh;
 }
 

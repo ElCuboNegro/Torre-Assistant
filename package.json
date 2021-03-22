@@ -12,5 +12,8 @@
     "dotenv": "^8.2.0",
     "eslint": "^7.22.0",
     "eslint-config-google": "^0.14.0"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.13.0"
   }
 }

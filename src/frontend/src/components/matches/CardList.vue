@@ -2,17 +2,17 @@
   <div>
     <div v-if="loading" id="loading">
       <div class="spinner-grow text-primary" role="status">
-        <span class="sr-only">Loading...</span>
+        <span class="sr-only">cargando...</span>
       </div>
 
       <div class="spinner-grow text-success" role="status">
-        <span class="sr-only">Loading...</span>
+        <span class="sr-only">cargando...</span>
       </div>
       <div class="spinner-grow text-danger" role="status">
-        <span class="sr-only">Loading...</span>
+        <span class="sr-only">cargando...</span>
       </div>
       <div class="spinner-grow text-warning" role="status">
-        <span class="sr-only">Loading...</span>
+        <span class="sr-only">cargando...</span>
       </div>
     </div>
     <div v-if="!loading">
