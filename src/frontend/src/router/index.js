@@ -1,8 +1,8 @@
-import Vue from 'vue';
-import Router from 'vue-router';
 import Auth from '../views/Auth.vue';
 import Home from '../views/Home.vue';
 import Matches from '../views/Matches.vue';
+import Router from 'vue-router';
+import Vue from 'vue';
 import auth from '../store/modules/auth';
 import pageNotFound from '../views/PageNotFound';
 

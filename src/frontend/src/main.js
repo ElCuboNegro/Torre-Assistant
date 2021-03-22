@@ -1,16 +1,17 @@
-import Vue from 'vue';
-import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHeart, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import store from "./store";
-import App from './App.vue';
-import router from './router/index.js';
 
+import { faHeart, faTimes } from '@fortawesome/free-solid-svg-icons';
+
+import App from './App.vue';
+import BootstrapVue from 'bootstrap-vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import Vue from 'vue';
+import VueSweetalert2 from 'vue-sweetalert2';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import router from './router/index.js';
+import store from "./store";
 
 library.add(faHeart);
 library.add(faTimes);
