@@ -17,7 +17,7 @@ let router = new Router({
 			name: 'auth',
 			component: Auth,
 			meta: {
-				title: "Job♥Matcher | Authentication"
+				title: "TorreAssistant | Authentication"
 			}
 		},
 		{
@@ -25,7 +25,7 @@ let router = new Router({
 			name: 'home',
 			component: Home,
 			meta: {
-				title: "Job♥Matcher | Home",
+				title: "TorreAssistant | Home",
 				requiresAuth: true
 			}
 		}, {
@@ -33,7 +33,7 @@ let router = new Router({
 			name: 'matches',
 			component: Matches,
 			meta: {
-				title: "Job♥Matcher | Matches",
+				title: "TorreAssistant | Matches",
 				requiresAuth: true
 			}
 		},

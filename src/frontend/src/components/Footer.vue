@@ -1,9 +1,7 @@
 <template>
   <footer id="footer">
-    Job Matcher made with <font-awesome-icon icon="heart" /> by
+    Hecho con <font-awesome-icon icon="heart" /> por
     <a style="color: #838389" href="https://twitter.com/ElCuboNegro">@ElCuboNegro</a>
-    <br> Based on the work of <a style="color: #838389" href="https://twitter.com/pejedev">@pejedev</a>
-
   </footer>
 </template>
 

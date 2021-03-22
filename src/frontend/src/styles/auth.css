@@ -19,10 +19,6 @@
     min-height: 400px;
 }
 
-#half {
-    background: linear-gradient(90deg, #222622 50%, white 50%);
-}
-
 #auth {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

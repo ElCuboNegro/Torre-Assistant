@@ -1,9 +1,9 @@
 <template>
   <div>
     <b-card-text style="text-align: left; font-size: 14px">
-      <a>Sign In </a>
+      <a>Crea tu cuenta! </a>
       /
-      <a href="#" @click="emitToggleAuth"> Sign Up</a>
+      <a href="#" @click="emitToggleAuth"> Ingresa!</a>
     </b-card-text>
     <b />
     <form @submit.prevent="login">
@@ -36,7 +36,7 @@
           type="submit"
         >
           <span style="margin: 25px; font-weight: bold; font-size: 18px"
-            >Sign In</span
+            >Crea tu cuenta!</span
           >
         </b-button>
       </div>

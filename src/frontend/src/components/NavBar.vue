@@ -1,12 +1,8 @@
-<template>
+<!-- <template>
   <div v-if="!loading" id="navbar">
     <b-navbar toggleable="lg" type="light" style="background-color: #fff">
       <b-navbar-brand href="/" class="logo">
-        Job<font-awesome-icon
-          class="logo-hearth"
-          icon="heart"
-          size="xs"
-        />Matcher
+        TorreAssistant
       </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
@@ -95,4 +91,4 @@ export default {
     },
   },
 };
-</script>
+</script> -->

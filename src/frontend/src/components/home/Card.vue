@@ -13,7 +13,7 @@
     </b-card-body>
 
     <b-card-body id="apply">
-        <a v-bind:href="'https://torre.co/en/jobs/' + offer.id">Apply now...</a>
+        <a v-bind:href="'https://torre.co/en/jobs/' + offer.id">Aplica ahora!...</a>
     </b-card-body>
 
     <b-card-footer class="text-center">Powered by Torre Api</b-card-footer>

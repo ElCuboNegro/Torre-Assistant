@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-card-text style="text-align: left; font-size: 14px">
-      <a href="#" @click="emitToggleAuth">Sign In </a>
+      <a href="#" @click="emitToggleAuth">Crea tu cuenta! </a>
       /
       <a> Sign Up</a>
     </b-card-text>
@@ -32,7 +32,7 @@
           v-model="password"
           type="password"
           id="inline-form-input-password"
-          placeholder="Password"
+          placeholder="Contraseña"
         ></b-input>
       </b-input-group>
       <br />
@@ -44,7 +44,7 @@
           type="submit"
         >
           <span style="margin: 25px; font-weight: bold; font-size: 18px"
-            >Sign Up</span
+            >Crea tu cuenta!</span
           >
         </b-button>
       </div>
