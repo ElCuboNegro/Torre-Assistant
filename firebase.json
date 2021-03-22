@@ -1,17 +1,23 @@
 {
+  "functions": {
+    "runtime": "nodejs14"
+  },
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "public",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/api/**",
+        "function": "app"
+      }
     ]
-  },
-  "functions": {
-    "source": "src/backend/index.js"
   }
 }
