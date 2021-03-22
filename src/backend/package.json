@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "@torre-assistant/backend",
   "version": "0.0.1",
   "description": "Torre Technical Test Backend",
   "main": "server.js",
