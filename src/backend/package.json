@@ -2,7 +2,7 @@
   "name": "@torre-assistant/backend",
   "version": "0.0.1",
   "description": "Torre Technical Test Backend",
-  "main": "server.js",
+  "main": "index.js",
   "author": "Juan Jose Alban Ortiz",
   "license": "MIT",
   "scripts": {
