@@ -76,7 +76,7 @@ app.handle('create_user', async (conv) => {
 // needed.
 app.handle('place_order', async (conv) => {
   let order = conv.session.params.order;
-  let usual = conv.user.params.usual;
+  const usual = conv.user.params.usual;
 
   if (order === USUAL) {
     order = usual;
@@ -89,7 +89,7 @@ app.handle('place_order', async (conv) => {
       {count: admin.firestore.FieldValue.increment(1)});
   if (order !== usual) {
     // Recompute usual in case this order changed the favorite
-    let usualDoc = await orderHistoryColl.orderBy('count').limit(1).get();
+    const usualDoc = await orderHistoryColl.orderBy('count').limit(1).get();
     conv.user.params.usual = usualDoc.data().option;
   }
 
