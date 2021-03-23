@@ -3,7 +3,19 @@
 ## Description: 
 Kronos Torre is a Google Action that can help you to find a job.
 Note: this project is not intended to production. use Vue, nuxt or any other way to render pages inside google assistant is not recomended and this is only an example intended to show the use of this tools.
+
+this project is NOT INTENDED FOR PRODUCTION and is just made for demostrative purposes.
+
 A way better and simplier way to perform this divelopment is through rich responses and SSML, but that kind of efforts don't allow you to modify the frontend at any level.
+Some of the functions should be approved by google before shown as part as google assistant, however you can explore them at:
+
+https://torre-assistant.web.app
+
+
+the project can be tested in the alpha release from the following link:
+https://assistant.google.com/services/a/uid/000000c2fdcd53e1?hl=es
+
+that will give you access to some features related with google actions.
 
 - [Kronos Torre](#kronos-torre)
   - [Description:](#description)
@@ -15,11 +27,11 @@ A way better and simplier way to perform this divelopment is through rich respon
     - [Create and setup the project:](#create-and-setup-the-project)
   - [Get the Torre Assistant code](#get-the-torre-assistant-code)
   - [Deploy and test the Assistant](#deploy-and-test-the-assistant)
-  - [In deep documentation:](#in-deep-documentation)
+  - [](#)
+  - [Pending jobs:](#pending-jobs)
   - [Contributing](#contributing)
   - [Credits:](#credits)
   - [License:](#license)
-  - [Build Setup](#build-setup)
 
 ## Installation: 
 ### NodeJS
@@ -84,8 +96,12 @@ After you set up the project, you can deploy the Torre Assistant web app and you
 ```
 	baseURL: "https://PROJECT_ID.web.app/api/v1"
 ```
+4. Compile the frontend with
+5. ```bash
+6. npm run build
+7. ```
 
-4. create a .env file with the following information:
+8. create a .env file with the following information:
    
    ```
     #GENERAL CONFIG
@@ -107,7 +123,7 @@ After you set up the project, you can deploy the Torre Assistant web app and you
    ```
    fill all the parts with the correct information of your database.
 
-5. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
+9. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
   ```
   gactions push 
   ```
@@ -117,10 +133,13 @@ After you set up the project, you can deploy the Torre Assistant web app and you
   ```
 6. Open the link that the command-line tool returns to go to the simulator.
 
+## 
 
-
-## In deep documentation:
-TBD
+## Pending jobs:
+1. connect the NLU to the webapp: ETA -> 4 days
+2. finish the account linking integration: ETA -> 12 hours
+3. connect the account handler to the webapp: ETA -> 2 days
+4. connect to a custom smalltalk engine: ETA -> 6 days
 
 ## Contributing
 TBD
@@ -128,29 +147,7 @@ TBD
 ## Credits:
 Google Actions SDK -> Google LLC.
 Nuxt.js -> Creators
+vue scaffolding -> @pejedev
 
 ## License: 
 Copyright, Juan José Albán (2021)
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

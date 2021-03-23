@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div v-if="!loading" id="navbar">
     <b-navbar toggleable="lg" type="light" style="background-color: #fff">
       <b-navbar-brand href="/" class="logo">
@@ -91,4 +91,4 @@ export default {
     },
   },
 };
-</script> -->
+</script>

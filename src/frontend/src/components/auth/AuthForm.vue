@@ -17,7 +17,6 @@
   </div>
 </template> 
 
-
 <script>
 import SignInForm from "./SignInForm.vue";
 import SignUpForm from "./SignUpForm.vue";
