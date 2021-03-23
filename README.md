@@ -1,4 +1,4 @@
-# Kronos Torre
+# Torre Assistant
 
 ## Description: 
 Kronos Torre is a Google Action that can help you to find a job.
