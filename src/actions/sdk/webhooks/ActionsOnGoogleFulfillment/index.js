@@ -73,12 +73,12 @@ app.handle('change_color', (conv) => {
     return;
   }
   conv.add(`Ok, I changed my color to ${color}. What else?`);
-    conv.add(new Canvas({
-      data: {
-        command: 'TINT',
-        tint: tints[color],
-      },
-    }));
+  conv.add(new Canvas({
+    data: {
+      command: 'TINT',
+      tint: tints[color],
+    },
+  }));
 });
 
 app.handle('start_spin', (conv) => {

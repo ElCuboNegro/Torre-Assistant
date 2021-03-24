@@ -19,7 +19,7 @@ that will give you access to some features related with google actions.
 
 To quick apply to torre jobs, there will be needed public API's
 
-- [Kronos Torre](#kronos-torre)
+- [Torre Assistant](#torre-assistant)
   - [Description:](#description)
   - [Installation:](#installation)
     - [NodeJS](#nodejs)
@@ -103,29 +103,36 @@ After you set up the project, you can deploy the Torre Assistant web app and you
 6. npm run build
 7. ```
 
-8. create a .env file with the following information:
+8. create a .env file with the following information (change for the info that applies to you):
    
    ```
-    #GENERAL CONFIG
-      DEBUG=TRUE
-      PORT=7777
+category= GAMES_AND_TRIVIA
+defaultLocale= es
+developerEmail= j.alban@uniandes.edu.co
+developerName= Juan José Albán Ortiz
+displayName= Torre Assistant
+fullDescription= The assistantis a voice interface to Torre.co
+privacyPolicyUrl= https=//torre.co/privacy
+pronunciation= Torre Asistant
+shortDescription= Get your dream job
+smallLogoImage=
+termsOfServiceUrl= https=//torre.co/terms
+projectId= "torre-assistant"
 
-    #DATABASE CONFIG
+# BackEndConfiguration
+apiURL = https=//us-central1-torre-assistant.cloudfunctions.net/api
 
-      DB_HOST=
-      DB_PORT=
-      DB_DIALECT=mysql
-      DB_NAME=
-      DB_USERNAME=
-      DB_PASSWORD=
+# Database
 
-    #JWT CONFIG
+PORT= 7777
+DEBUG= TRUE
+DB_USERNAME=
+DB_PASSWORD=
+DB_NAME=
+DB_HOST=
+DB_PORT=
+DB_DIALECT=
 
-      SECRET_KEY=
-
-    #ProjectURLs
-    CANVAS_URL =
-    BACKEND_URL =
 
    ```
    fill all the parts with the correct information of your database.
