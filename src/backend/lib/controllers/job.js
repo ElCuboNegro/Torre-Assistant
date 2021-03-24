@@ -1,81 +1,74 @@
 const db = require('../models');
 const jwt = require('jsonwebtoken');
 const api = require('../api/torre');
-const {Job} = db;
+const Job = db.Job;
 
 const controller = {
 
-  async getOffers(req, res) {
+  getOffers: async (req, res) => {
     try {
-      const token = req.headers.authorization.split(' ')[1];
+      const token = req.headers['authorization'].split(' ')[1];
       const offset = req.params.offset || 0;
       const user = jwt.decode(token);
       const jobs = await api.jobSearch(offset, user.torre_user);
       const offers = jobs.results;
-
       return res.status(200).json(offers);
-    } catch (ex) {
-      return res.status(500).json({error: `${ex}`});
+    } catch (e) {
+      return res.status(500).json({error: `${e}`});
     }
   },
-  async getAllOffers(req, res) {
+  getAllOffers: async (req, res) => {
     try {
-      const token = req.headers.authorization.split(' ')[1];
+      const token = req.headers['authorization'].split(' ')[1];
       const user = jwt.decode(token);
-
       console.log(user);
-      const {email} = user;
+      const email = user.email;
       const jobs = await Job.findAll({where: {email}});
-
       console.log(jobs);
-
       return res.status(200).json(jobs);
-    } catch (ex) {
-      return res.status(500).json({error: `${ex}`});
+    } catch (e) {
+      return res.status(500).json({error: `${e}`});
     }
   },
-  async saveOffers(req, res) {
+  saveOffers: async (req, res) => {
     try {
-      const token = req.headers.authorization.split(' ')[1];
+      const token = req.headers['authorization'].split(' ')[1];
       const user = jwt.decode(token);
-      const {email} = user;
+      const email = user.email;
       const {id, compensation, skills, objective} = req.body;
 
-      const tx = await Job.findAll({where: {email, torreId: id}});
-
-      if (tx.length > 0) {
+      const tx = await Job.findAll({where: {email: email, torreId: id}});
+      if (tx.length) {
         return res.status(200).json();
       }
       const skill = JSON.stringify(skills);
 
       const job = {
-        email,
+        email: email,
         torreId: id,
-        objective,
+        objective: objective,
         skills: skill,
       };
-
       job.organization = req.body.organizations[0].name;
       job.picture = req.body.organizations[0].picture;
       if (compensation.data) {
         job.currency = compensation.data.currency;
 
         if (compensation.data.minAmount) {
-          job.compensation_min = Number.parseInt(compensation.data.minAmount);
+          job.compensation_min = parseInt(compensation.data.minAmount);
         }
         if (compensation.data.maxAmount) {
-          job.compensation_max = Number.parseInt(compensation.data.maxAmount);
+          job.compensation_max = parseInt(compensation.data.maxAmount);
         }
       }
       await Job.create(job);
 
 
       return res.status(200).json();
-    } catch (ex) {
-      return res.status(500).json({error: `${ex}`});
+    } catch (e) {
+      return res.status(500).json({error: `${e}`});
     }
   },
 
 };
-
 module.exports = controller;

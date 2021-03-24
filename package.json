@@ -3,17 +3,23 @@
   "version": "1.0.0",
   "description": "the assistant that will help you to get a better job",
   "author": "Juan Jose Alban <j.alban@uniandes.edu.co>",
-  "private": true,
+  "private": false,
   "scripts": {
-    "lint": "eslint --ext .js,.vue"
+    "lint": "eslint --ext .js,.vue",
+    "install": "(cd src/frontend/ && npm install) && (cd ../backend && npm install) && (cd ../actions/webhooks/ActionsOnGoogleFulfillment && npm install)",
+    "push": "(git pull && git commit -m 'automatic commit, squash when possible') && (cd src/actions && gactions push)",
+    "pull": "(git pull && (cd src/actions && gactions pull --force))",
+    "build": "(cd src/frontend/ && npm run build)"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.22.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "node-uglifier": "^0.5.41"
   },
   "dependencies": {
+    "@inventage/envsubst": "^0.3.7",
     "actions-on-google": "^2.13.0"
   }
 }

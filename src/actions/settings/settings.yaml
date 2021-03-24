@@ -1,0 +1,13 @@
+category: {{category}}
+defaultLocale: {{defaultLocale}}
+localizedSettings: {{localizedSettings}}
+  developerEmail: {{developerEmail}}
+  developerName: {{developerName}}
+  displayName: {{displayName}}
+  fullDescription: {{fullDescription}}
+  privacyPolicyUrl: {{privacyPolicyUrl}}
+  pronunciation: {{pronunciation}}
+  shortDescription: {{shortDescription}}
+  smallLogoImage: {{smallLogoImage}}
+  termsOfServiceUrl: {{termsOfServiceUrl}}
+projectId: {{projectId}}

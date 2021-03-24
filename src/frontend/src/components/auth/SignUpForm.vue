@@ -1,9 +1,9 @@
 <template>
   <div>
     <b-card-text style="text-align: left; font-size: 14px">
-      <a href="#" @click="emitToggleAuth">Crea tu cuenta! </a>
+      <a href="#" @click="emitToggleAuth">Ingresa!</a>
       /
-      <a> Sign Up</a>
+      <a> Crea tu cuenta</a>
     </b-card-text>
     <b />
     <form @submit.prevent="register">

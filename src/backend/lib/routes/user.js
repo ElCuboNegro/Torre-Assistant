@@ -1,9 +1,8 @@
 'use strict';
-
-const {Router} = require('express');
-const UserController = require('../controllers/user');
-
-const router = new Router();
+const express = require('express');
+// eslint-disable-next-line new-cap
+const router = express.Router();
+const UserController = require.main.require('./controllers/user');
 
 router.get('/me', UserController.me);
 

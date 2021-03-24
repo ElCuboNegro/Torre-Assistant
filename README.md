@@ -17,6 +17,8 @@ https://assistant.google.com/services/a/uid/000000c2fdcd53e1?hl=es
 
 that will give you access to some features related with google actions.
 
+To quick apply to torre jobs, there will be needed public API's
+
 - [Kronos Torre](#kronos-torre)
   - [Description:](#description)
   - [Installation:](#installation)
@@ -120,6 +122,11 @@ After you set up the project, you can deploy the Torre Assistant web app and you
     #JWT CONFIG
 
       SECRET_KEY=
+
+    #ProjectURLs
+    CANVAS_URL =
+    BACKEND_URL =
+
    ```
    fill all the parts with the correct information of your database.
 

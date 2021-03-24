@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import NavBar from "../components/NavBar.vueDEL";
+import NavBar from "../components/NavBar.vue";
 import CardList from "../components/matches/CardList.vue"
 export default {
     name: "Home",

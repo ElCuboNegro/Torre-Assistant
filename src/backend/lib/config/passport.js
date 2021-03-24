@@ -1,29 +1,24 @@
-const {environment} = require('../config/config');
-
+'use strict';
 const JwtStrategy = require('passport-jwt').Strategy;
-const {ExtractJwt} = require('passport-jwt');
-
-const db = require('../models');
-const {User} = db;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const db = require.main.require('./models');
+const User = db.User;
 
 const opts = {};
-
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = environment.JWT.SECRET_KEY;
+opts.secretOrKey = __.JWT.SECRET_KEY;
 
 module.exports = (passport) => {
   passport.use(
-      new JwtStrategy(opts, async (jwt, done) => {
+      new JwtStrategy(opts, async (jwtPayload, done) => {
         try {
-          const user = await User.findAll({where: {email: jwt.email}});
-
-          if (user.length > 0) {
+          const user = await User.findAll({where: {email: jwtPayload.email}});
+          if (user.length) {
             return done(null, user);
           }
-
           return done(null, false);
-        } catch (ex) {
-          console.error(ex);
+        } catch (error) {
+          console.error(error);
         }
       }),
   );

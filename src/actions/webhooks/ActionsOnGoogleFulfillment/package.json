@@ -1,0 +1,25 @@
+{
+  "name": "@torre-assistant/actions",
+  "version": "0.0.1",
+  "private": false,
+  "description": "the action that will help you to find your dream's job",
+  "author": "Juan Jose Alban <j.alban@uniandes.edu.co>",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint --fix \"**/*.js\""
+  },
+  "engines": {
+    "node": "10"
+  },
+  "dependencies": {
+    "@assistant/conversation": "^3.0.0",
+    "firebase-admin": "~8.12.1",
+    "firebase-functions": "^3.6.2"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^5.2.0",
+    "eslint-config-google": "^0.9.1"
+  }
+}

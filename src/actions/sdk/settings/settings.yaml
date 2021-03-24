@@ -1,0 +1,15 @@
+
+category: GAMES_AND_TRIVIA
+defaultLocale: en
+localizedSettings:
+  developerEmail: j.alban@uniandes.edu.co
+  developerName: juan jose alban ortiz
+  displayName: Torre Assistant
+  fullDescription: it will help you to get a job
+  privacyPolicyUrl: torre.co/privacy
+  pronunciation: Torre Assistant
+  shortDescription:
+  smallLogoImage:
+  termsOfServiceUrl: torre.co/terms
+projectId: torre-assistant
+usesInteractiveCanvas: true

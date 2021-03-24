@@ -1,7 +1,0 @@
-handler:
-  staticPrompt:
-    candidates:
-    - promptResponse:
-        canvas:
-          url: https://torre-assistant.web.app
-transitionToScene: Welcome

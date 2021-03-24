@@ -1,6 +1,0 @@
-handlers:
-- name: create_user
-- name: system_error
-- name: place_order
-inlineCloudFunction:
-  executeFunction: ActionsOnGoogleFulfillment
