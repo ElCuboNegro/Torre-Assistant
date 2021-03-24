@@ -99,11 +99,11 @@ After you set up the project, you can deploy the Torre Assistant web app and you
 	baseURL: "https://PROJECT_ID.web.app/api/v1"
 ```
 4. Compile the frontend with
-5. ```bash
-6. npm run build
-7. ```
+ ```bash
+ npm run build
+```
 
-8. create a .env file with the following information (change for the info that applies to you):
+5. create a .env file with the following information (change for the info that applies to you):
    
    ```
 category= GAMES_AND_TRIVIA
@@ -137,15 +137,15 @@ DB_DIALECT=
    ```
    fill all the parts with the correct information of your database.
 
-9. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
+6. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
   ```
   gactions push 
   ```
-5. From the torre-assistant/sdk/ directory, run the following command to test your Actions project in the simulator:
+7. From the torre-assistant/sdk/ directory, run the following command to test your Actions project in the simulator:
   ```
   gactions deploy preview
   ```
-6. Open the link that the command-line tool returns to go to the simulator.
+8. Open the link that the command-line tool returns to go to the simulator.
 
 ## 
 
@@ -161,7 +161,7 @@ TBD
 ## Credits:
 Google Actions SDK -> Google LLC.
 Nuxt.js -> Creators
-vue scaffolding -> @pejedev
+CI integration -> @pandres95
 
 ## License: 
 Copyright, Juan José Albán (2021)
