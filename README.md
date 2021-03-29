@@ -105,34 +105,34 @@ After you set up the project, you can deploy the Torre Assistant web app and you
 
 5. create a .env file with the following information (change for the info that applies to you):
 
-    ``` env
-    category= GAMES_AND_TRIVIA
-    defaultLocale= es
-    developerEmail= j.alban@uniandes.edu.co
-    developerName= Juan José Albán Ortiz
-    displayName= Torre Assistant
-    fullDescription= The assistantis a voice interface to Torre.co
-    privacyPolicyUrl= https=//torre.co/privacy
-    pronunciation= Torre Asistant
-    shortDescription= Get your dream job
-    smallLogoImage=
-    termsOfServiceUrl= https=//torre.co/terms
-    projectId= "torre-assistant"
+   ``` env
+   category= GAMES_AND_TRIVIA
+   defaultLocale= es
+   developerEmail= j.alban@uniandes.edu.co
+   developerName= Juan José Albán Ortiz
+   displayName= Torre Assistant
+   fullDescription= The assistantis a voice interface to Torre.co
+   privacyPolicyUrl= https=//torre.co/privacy
+   pronunciation= Torre Asistant
+   shortDescription= Get your dream job
+   smallLogoImage=
+   termsOfServiceUrl= https=//torre.co/terms
+   projectId= "torre-assistant"
 
-    # BackEndConfiguration
-    apiURL = https=//us-central1-torre-assistant.cloudfunctions.net/api
+   # BackEndConfiguration
+   apiURL = https=//us-central1-torre-assistant.cloudfunctions.net/api
 
-    # Database
+   # Database
 
-    PORT= 7777
-    DEBUG= TRUE
-    DB_USERNAME=
-    DB_PASSWORD=
-    DB_NAME=
-    DB_HOST=
-    DB_PORT=
-    DB_DIALECT=
-    ```
+   PORT= 7777
+   DEBUG= TRUE
+   DB_USERNAME=
+   DB_PASSWORD=
+   DB_NAME=
+   DB_HOST=
+   DB_PORT=
+   DB_DIALECT=
+   ```
    fill all the parts with the correct information of your database.
 
 6. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
