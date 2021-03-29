@@ -104,50 +104,47 @@ After you set up the project, you can deploy the Torre Assistant web app and you
 ```
 
 5. create a .env file with the following information (change for the info that applies to you):
-   
-   ```
-category= GAMES_AND_TRIVIA
-defaultLocale= es
-developerEmail= j.alban@uniandes.edu.co
-developerName= Juan José Albán Ortiz
-displayName= Torre Assistant
-fullDescription= The assistantis a voice interface to Torre.co
-privacyPolicyUrl= https=//torre.co/privacy
-pronunciation= Torre Asistant
-shortDescription= Get your dream job
-smallLogoImage=
-termsOfServiceUrl= https=//torre.co/terms
-projectId= "torre-assistant"
 
-# BackEndConfiguration
-apiURL = https=//us-central1-torre-assistant.cloudfunctions.net/api
+    ``` env
+    category= GAMES_AND_TRIVIA
+    defaultLocale= es
+    developerEmail= j.alban@uniandes.edu.co
+    developerName= Juan José Albán Ortiz
+    displayName= Torre Assistant
+    fullDescription= The assistantis a voice interface to Torre.co
+    privacyPolicyUrl= https=//torre.co/privacy
+    pronunciation= Torre Asistant
+    shortDescription= Get your dream job
+    smallLogoImage=
+    termsOfServiceUrl= https=//torre.co/terms
+    projectId= "torre-assistant"
 
-# Database
+    # BackEndConfiguration
+    apiURL = https=//us-central1-torre-assistant.cloudfunctions.net/api
 
-PORT= 7777
-DEBUG= TRUE
-DB_USERNAME=
-DB_PASSWORD=
-DB_NAME=
-DB_HOST=
-DB_PORT=
-DB_DIALECT=
+    # Database
 
-
-   ```
+    PORT= 7777
+    DEBUG= TRUE
+    DB_USERNAME=
+    DB_PASSWORD=
+    DB_NAME=
+    DB_HOST=
+    DB_PORT=
+    DB_DIALECT=
+    ```
    fill all the parts with the correct information of your database.
 
 6. From the torre-assistant/sdk/ directory, run the following command to push the local version of your Actions project to the console as a draft version:
-  ```
+  ``` bash
   gactions push 
   ```
 7. From the torre-assistant/sdk/ directory, run the following command to test your Actions project in the simulator:
-  ```
+  ``` bash
   gactions deploy preview
   ```
 8. Open the link that the command-line tool returns to go to the simulator.
 
-## 
 
 ## Pending jobs:
 1. connect the NLU to the webapp: ETA -> 4 days
